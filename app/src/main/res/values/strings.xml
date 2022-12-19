@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Weather App</string>
+    <string name="search_icon">Search country</string>
+    <string name="back">Close search</string>
+    <string name="clearText">Clear text</string>
+    <string name="api_key">d196c1ddf06c4bd7aa3170941221812</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+</resources>
