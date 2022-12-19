@@ -22,15 +22,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -152,7 +149,8 @@ fun Greeting(viewModel: WeatherViewModel) {
 
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier.weight(2f),
+                        verticalArrangement = Arrangement.Center
                     ) {
                         Image(
                             painter = rememberAsyncImagePainter(viewModel.state.weatherInfo!!.today.icon),
@@ -245,13 +243,10 @@ fun Greeting(viewModel: WeatherViewModel) {
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchView(viewModel: WeatherViewModel) {
     var expanded by rememberSaveable { mutableStateOf(false) }
     val focusRequester = FocusRequester()
-
-    val keyboardController = LocalSoftwareKeyboardController.current
 
     val text by viewModel.text.collectAsState()
 
@@ -286,12 +281,7 @@ fun SearchView(viewModel: WeatherViewModel) {
                         Modifier
                             .weight(1f)
                             .padding(end = 20.dp)
-                            .focusRequester(focusRequester)
-                            .onFocusChanged {
-                                if (it.isFocused) {
-                                    keyboardController?.show()
-                                }
-                            },
+                            .focusRequester(focusRequester),
                         onValueChange = {
                             viewModel.text.value = it
                         },
