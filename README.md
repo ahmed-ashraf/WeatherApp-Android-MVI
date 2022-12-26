@@ -4,7 +4,7 @@ This app uses this API https://www.weatherapi.com/
 
 ## Notes
 
-- This app is implemented using MVI and Jetpack Compose
+- This app is implemented using MVI, Jetpack Compose and Dagger Hilt
 
 
 
